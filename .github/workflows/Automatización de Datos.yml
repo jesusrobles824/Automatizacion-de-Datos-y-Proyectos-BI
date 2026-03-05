@@ -24,7 +24,7 @@ jobs:
           pip install yfinance pandas matplotlib numpy xlrd openpyxl pandas-datareader imf-reader
 
       - name: Run script
-        run: python ejecutar_código.py
+        run: python ejecutar codigo 2.py
 
       - name: Configurar git
         run: |
@@ -34,17 +34,17 @@ jobs:
       - name: Mover CSV a carpeta Automatización de Datos
         run: |
           mkdir -p "Automatización de Datos"
-          mv ADRs_Precios.csv \
-             ADRs_variacion_porcentual_diaria.csv \
-             Depósitos_tesoro_variación_diaria.csv \
-             Depósitos_tesoro.csv \
-             Principales_Tasas_de_Interés.csv \
-             Variación_RRII_Factores_Explicación.csv \
-             Variación_Acumulada_RRII_Factores_Explicación.csv \
-             Préstamos_pesos_sector_privado_en_millones_por_tipo.csv \
-             Préstamos_usd_sector_privado_en_millones_por_tipo.csv \
-             Préstamos_Depósitos_usd_sector_privado_en_millones.csv \
-             Depósitos_tesoro_variación_diaria_y_factores_de_explicación.csv \
+          mv ADRs_variacion_porcentual_diaria.csv \ 
+          ADRs_Precios.csv \
+          Depósitos_tesoro_variación_diaria_en_millones.csv \
+          Depósitos_tesoro_en_millones.csv \
+          Principales_Tasas_de_Interés_de_Mercado.csv \
+          Variación_RRII_Factores_Explicación.csv \
+          Variación_Acumulada_RRII_Factores_Explicación_Gestión_Milei.csv \
+          Préstamos_sector_privado_en_millones_pesos_por_tipo_crédito.csv \
+          Préstamos_sector_privado_en_millones_usd_por_tipo_credito.csv \
+          Préstamos_Depósitossector_privado_usd_en_millones.csv
+
              "Automatización de Datos/" || echo "No hay archivos para mover"
 
       - name: Guardar csv
