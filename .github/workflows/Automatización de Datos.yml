@@ -2,7 +2,7 @@ name: Automatización de Datos
 
 on:
   schedule:
-    - cron: "0 23 * * *"   # Todos los días a las 20:00 de Argentina (23:00 UTC)
+    - cron: "0 23 * * *"
   workflow_dispatch:
 
 jobs:
@@ -10,13 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -24,31 +22,20 @@ jobs:
           pip install yfinance pandas matplotlib numpy xlrd openpyxl pandas-datareader imf-reader
 
       - name: Run script
-        run: python código_ejecutar.py
+        run: python codigo_ejecutar.py
 
       - name: Configurar git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Mover CSV a carpeta Automatización de Datos
+      - name: Mover CSV
         run: |
           mkdir -p "Automatización de Datos"
-          mv ADRs_variacion_porcentual_diaria.csv \ 
-          ADRs_Precios.csv \
-          Depósitos_tesoro_variación_diaria_en_millones.csv \
-          Depósitos_tesoro_en_millones.csv \
-          Principales_Tasas_de_Interés_de_Mercado.csv \
-          Variación_RRII_Factores_Explicación.csv \
-          Variación_Acumulada_RRII_Factores_Explicación_Gestión_Milei.csv \
-          Préstamos_sector_privado_en_millones_pesos_por_tipo_crédito.csv \
-          Préstamos_sector_privado_en_millones_usd_por_tipo_credito.csv \
-          Préstamos_Depósitossector_privado_usd_en_millones.csv
+          mv *.csv "Automatización de Datos/" || echo "No hay archivos"
 
-             "Automatización de Datos/" || echo "No hay archivos para mover"
-
-      - name: Guardar csv
+      - name: Guardar cambios
         run: |
-          git add "Automatización de Datos/"
-          git commit -m "Auto-update: resultados $(date +'%Y-%m-%d %H:%M')" || echo "No hay cambios"
+          git add .
+          git commit -m "Auto-update: $(date +'%Y-%m-%d')" || echo "No hay cambios"
           git push
