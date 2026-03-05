@@ -24,7 +24,7 @@ jobs:
           pip install yfinance pandas matplotlib numpy xlrd openpyxl pandas-datareader imf-reader
 
       - name: Run script
-        run: python ejecutar codigo 2.py
+        run: python código_ejecutar.py
 
       - name: Configurar git
         run: |
