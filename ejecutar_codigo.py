@@ -63,10 +63,10 @@ diar_bas_var = diar_bas.diff()
 diar_bas_var = diar_bas_var.round(2)
 diar_bas_var = diar_bas_var.iloc[1:]
 diar_bas_var = diar_bas_var[::-1]
-diar_bas_var.to_csv('Depósitos_tesoro_variación_diaria_en_millones.csv', index=True)
+diar_bas_var.to_csv('Depósitos_tesoro_variación_diaria_en_millones_pesos_usd.csv', index=True)
 
 diar_bas = diar_bas[::-1]
-diar_bas.to_csv('Depósitos_tesoro_en_millones.csv', index=True)
+diar_bas.to_csv('Depósitos_tesoro_en_millones_pesos_usd.csv', index=True)
 
 
 
@@ -119,7 +119,7 @@ Prestamos_pesos.set_index('fecha', inplace=True)
 Prestamos_pesos = Prestamos_pesos[::-1]
 for col in Prestamos_pesos.columns:
     Prestamos_pesos[col] = pd.to_numeric(Prestamos_pesos[col], errors='coerce').round(0).astype('Int64')
-Prestamos_pesos.to_csv('Préstamos_sector_privado_en_millones_pesos_por_tipo_crédito.csv', index=True)
+Prestamos_pesos.to_csv('Préstamos_sector_privado_en_pesos_en_millones_por_tipo_crédito.csv', index=True)
 
 Prestamos_usd = pd.read_excel(BytesIO(response.content),sheet_name='PRESTAMOS',usecols='A,J,K,L,M,N,O,P,Q,V',skiprows=8)
 Prestamos_usd.columns = ['fecha','Adelantos','Documentos','Hipotecarios','Prendarios','Personales','Tarjetas','Otros','TOTAL','Tipo de serie']
@@ -129,7 +129,7 @@ Prestamos_usd.set_index('fecha', inplace=True)
 Prestamos_usd = Prestamos_usd[::-1]
 for col in Prestamos_usd.columns:
     Prestamos_usd[col] = pd.to_numeric(Prestamos_usd[col], errors='coerce').round(0).astype('Int64')
-Prestamos_usd.to_csv('Préstamos_sector_privado_en_millones_usd_por_tipo_credito.csv', index=True)
+Prestamos_usd.to_csv('Préstamos_sector_privado_en_usd_en_millones_por_tipo_crédito.csv', index=True)
 
 Depositos = pd.read_excel(BytesIO(response.content),sheet_name='DEPOSITOS',usecols='A,AA,AE',skiprows=8)
 Depositos.columns = ['fecha','Depósitos en dólares','Tipo de serie']
@@ -147,5 +147,6 @@ Prestamos_Depositos_usd = Prestamos.join(Depositos, how='inner')
 Prestamos_Depositos_usd = Prestamos_Depositos_usd[::-1]
 for col in Prestamos_Depositos_usd.columns:
     Prestamos_Depositos_usd[col] = pd.to_numeric(Prestamos_Depositos_usd[col], errors='coerce').round(0).astype('Int64')
-Prestamos_Depositos_usd.to_csv('Préstamos_Depósitossector_privado_usd_en_millones.csv',index=True)
+Prestamos_Depositos_usd.to_csv('Préstamos_Depósitos_sector_privado_en_usd_en_millones.csv',index=True)
+
 
