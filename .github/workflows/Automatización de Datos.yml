@@ -29,10 +29,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Mover CSV
+      - name: Commit cambios
         run: |
-          mkdir -p "Automatización de Datos"
-          mv *.csv "Automatización de Datos/" || echo "No hay archivos"
+         git add *.csv
+         git commit -m "Actualización automática de datos" || echo "No hay cambios"
+         git push
 
       - name: Guardar cambios
         run: |
