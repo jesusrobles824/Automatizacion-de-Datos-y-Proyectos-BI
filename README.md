@@ -1,6 +1,15 @@
-Este repositorio contiene proyectos enfocados en el manejo y análisis de datos.
+# 📊 Proyectos de Análisis y Visualización de Datos
 
-1) Se desarrollan procesos de automatización para la descarga, limpieza y almacenamiento de datos, con el objetivo de contar con información ordenada, actualizada y lista para su análisis.
+Este repositorio reúne proyectos enfocados en el procesamiento, análisis y visualización de datos, utilizando herramientas orientadas a la inteligencia de negocios y al análisis cuantitativo.
 
-2) Se incluyen proyectos de dashboards en Power BI orientados a la visualización de información y el análisis de indicadores
+## Contenido
+
+- 📈 **Dashboards en Power BI** para el monitoreo y análisis de indicadores mediante visualizaciones interactivas.
+- 🗄️ **Procesamiento y transformación de datos** para la preparación de información proveniente de diversas fuentes.
+- 📊 **Análisis exploratorio de datos (EDA)** y generación de métricas para la toma de decisiones.
+- 📉 **Visualización de datos** mediante gráficos e indicadores diseñados para comunicar información de forma clara y efectiva.
+
+## Objetivo
+
+El objetivo de este repositorio es centralizar proyectos relacionados con Business Intelligence y Data Analytics, mostrando diferentes enfoques para transformar datos en información útil mediante dashboards e informes interactivos.
 
